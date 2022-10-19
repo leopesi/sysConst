@@ -1,0 +1,24 @@
+{
+  "name": "sysconst",
+  "version": "1.0.0",
+  "description": "Sistema de gerenciamento de estoque e clientes para empresa do setor de locação de maquinário para construção civil.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leopesi/sysConst.git"
+  },
+  "author": "Leonardo Pesi and Yam Alao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leopesi/sysConst/issues"
+  },
+  "homepage": "https://github.com/leopesi/sysConst#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  }
+}
