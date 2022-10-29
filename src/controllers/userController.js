@@ -1,11 +1,21 @@
 const controller = {}
+const jwt = require('jsonwebtoken');
+
+
 
 controller.getList = (async (req, res) => {
-    res.send('User GET List')
+    res.json([{
+        id: 1,
+        nome: 'Luiz'
+    }]);
+    console.log('logou')
 });
 
 controller.getId = (async (req, res) => {
-    res.send(' User Get ID')
+    res.json([{
+        id: 1,
+        nome: 'Luiz'
+    }])
 });
 
 controller.post = (async (req, res) => {
