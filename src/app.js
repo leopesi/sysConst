@@ -1,9 +1,8 @@
 require('dotenv').config()
 const express = require('express');
-const mongoose= require('mongoose')
 const morgan = require('morgan')
+const db = require('./database/db'); //Database Connection
 const app = express()
-const port = 4000
 
 // Parser da Requisição HTTP
 app.use(express.json())
@@ -12,16 +11,17 @@ app.use(express.json())
 app.use(morgan('dev'))
 
 // Config Routers
-app.use(require('../src/routers/userRouter'))
-
+app.use('/user', require('./routes/user.routes'))
 
 //Credenciais
-const dbUser = process.env.DB_USER
-const dbPassword = process.env.DB_PASS
+const PORT = process.env.PORT;
 
-mongoose
-.connect(`mongodb+srv://${dbUser}:${dbPassword}@cluster0.fbr24tx.mongodb.net/?retryWrites=true&w=majority`)
-.then(() => {
-    app.listen(port)
-    console.log(`Example app listening on port ${port}!`)
-}).catch((err) => console.log(err))
+db.authenticate().then(() => {
+    console.log('Database connected...');
+}).catch(err => {
+    console.log('Error: ' + err);
+})
+
+db.sync().then(() => {
+    app.listen(PORT, console.log(`Server started on port ${PORT}`));
+}).catch(err => console.log("Error: " + err));

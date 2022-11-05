@@ -1,15 +1,11 @@
 require('dotenv').config()
-const express = require('express')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 const controller = {}
 
-const app = express()
-
-
 //Models
-const User = require('../models/Users.model')
+const User = require('../models/users.model')
 
 //Credenciais
 const SECRET = process.env.SECRET
