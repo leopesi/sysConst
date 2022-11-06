@@ -9,11 +9,11 @@ var Crud = {
 }
 
 function findAll() {
-    return Model.findAll();
+    return Model.findAll({attributes: {exclude: ['password'] }});
 }
 
 function findById(id) {
-    return Model.findByPk(id);
+    return Model.findByPk(id, {attributes: {exclude: ['password'] }});
 }
 
 function deleteById(id) {

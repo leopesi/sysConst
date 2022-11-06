@@ -25,7 +25,7 @@ function checkToken(req, res, next) {
 }
 
 router.post('/', userController.add);
-router.get('/', userController.find);
+router.get('/',  userController.find);
 router.get('/:id', userController.findById);
 router.put('/:id', userController.update);
 router.delete('/:id', userController.deleteById);

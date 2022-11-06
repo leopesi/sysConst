@@ -95,15 +95,16 @@ async function add(req, res) {
 
 };
 
-function findById(req, res) {
-    CRUD.findById(req.params.id).
-        then((data) => {
-            res.send(data);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-}
+async function findById(req, res) { 
+    const id = req.params.id
+    const user = await CRUD.findById(id); 
+    if (!user) {
+        return res.status(404).json({msg:"Usuário não encontrado"})
+    }
+    res.status(200).json({ user: user })
+    console.log(user)
+};
+
 
 function deleteById(req, res) {
     CRUD.deleteById(req.params.id).
