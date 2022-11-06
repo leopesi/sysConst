@@ -21,18 +21,25 @@ function deleteById(id) {
 }
 
 function create(user) {
-    var newUser = new Pesi(user);
+    var newUser = new Model(user);
     return newUser.save();
 }
 
 function update(user, id) {
     var updateUser = {
-        title: user.title,
-        technologies: pesi.technologies,
-        description: pesi.description,
-        budget: pesi.budget,
-        contact_email: pesi.contact_email
+        nome: user.nome, 
+        sobrenome: user.sobrenome, 
+        cpf: user.cpf, 
+        email: user.email, 
+        telefone: user.telefone, 
+        endereço: user.endereco, 
+        numero: user.numero, 
+        estado: user.estado, 
+        cidade: user.cidade, 
+        bairro: user.bairro, 
+        rua: user.rua, 
+        cep: user.cep,
     };
-    return Pesi.update(updatePesi, { where: { id: id } });
+    return Model.update(updateUser, { where: { id: id } });
 }
 module.exports = Crud;
