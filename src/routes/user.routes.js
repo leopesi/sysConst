@@ -10,7 +10,6 @@ const SECRET = process.env.SECRET
 // Functions
 function checkToken(req, res, next) {
     const authHeader = req.headers['authorization']
-    console.log(authHeader)
     const token = authHeader && authHeader.split(' ')[1]
 
     if (!token) {
@@ -24,7 +23,7 @@ function checkToken(req, res, next) {
     }
 }
 
-router.post('/user', checkToken, userController.add);
+router.post('/user', userController.add);
 router.get('/user',  checkToken, userController.find);
 router.get('/user/:id', checkToken, userController.findById);
 router.put('/user/:id', checkToken, userController.update);

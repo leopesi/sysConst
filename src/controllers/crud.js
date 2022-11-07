@@ -9,20 +9,20 @@ var Crud = {
 }
 
 function findAll() {
-    return Model.findAll({attributes: {exclude: ['password'] }});
+    return Model.findAll({attributes: {exclude: ['password'] }})    
 }
 
 function findById(id) {
-    return Model.findByPk(id, {attributes: {exclude: ['password'] }});
+    return Model.findByPk(id, {attributes: {exclude: ['password'] }})
 }
 
 function deleteById(id) {
-    return Model.destroy({ where: { id: id } });
+    return Model.destroy({ where: { id: id } })
 }
 
 function create(user) {
     var newUser = new Model(user);
-    return newUser.save();
+    return newUser.save()
 }
 
 function update(user, id) {
@@ -40,6 +40,6 @@ function update(user, id) {
         rua: user.rua, 
         cep: user.cep,
     };
-    return Model.update(updateUser, { where: { id: id } });
+    return Model.update(updateUser, { where: { id: id } })
 }
 module.exports = Crud;

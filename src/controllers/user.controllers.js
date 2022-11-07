@@ -13,7 +13,6 @@ var userController = {
 
 //Register User
 async function add(req, res) {
-    console.log(req.body)
     const {nome, sobrenome, cpf, email, telefone, endereço, numero, estado, cidade, bairro, rua, cep, password, confirmpassword} = req.body
 
     //validation
@@ -84,6 +83,7 @@ async function add(req, res) {
     try {
         await user.save()
         res.status(201).json({ msg: "Usuario creado con éxito!"})
+        console.log("Usuário Criado!")
     }catch (error) {
         console.log(error)
         res
@@ -102,7 +102,7 @@ async function findById(req, res) {
         return res.status(404).json({msg:"Usuário não encontrado"})
     }
     res.status(200).json({ user: user })
-    console.log(user)
+    console.log("Usuário encontrado!")
 };
 
 
@@ -113,6 +113,7 @@ async function deleteById(req, res) {
                 message: "Gig deleted successfully",
                 pesi: data
             })
+            console.log("Usuário Deletado!")
         })
         .catch((error) => {
             console.log(error);
@@ -126,6 +127,7 @@ async function update(req, res) {
                 message: "Gig updated successfully",
                 user: data
             })
+            console.log("Usuário Atualizado!")
         })
         .catch((error) => {
             console.log(error);
@@ -135,8 +137,9 @@ async function update(req, res) {
 async function find(req, res) {
     CRUD.findAll().
 
-        then((data) => {
-            res.send(data);
+    then((data) => {
+            res.send(data),
+            console.log("Lista de Usuários encontrada!");
         })
         .catch((error) => {
             console.log(error);
