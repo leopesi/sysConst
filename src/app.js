@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(morgan('dev'))
 
 // Config Routers
-app.use('/', require('./routes/index'))
+app.use(require('./routes/index.routes'))
 
 //Credenciais
 const PORT = process.env.PORT;

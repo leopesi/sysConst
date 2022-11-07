@@ -24,10 +24,10 @@ function checkToken(req, res, next) {
     }
 }
 
-router.post('/', checkToken, userController.add);
-router.get('/',  checkToken, userController.find);
-router.get('/:id', checkToken, userController.findById);
-router.put('/:id', checkToken, userController.update);
-router.delete('/:id', checkToken, userController.deleteById);
+router.post('/user', checkToken, userController.add);
+router.get('/user',  checkToken, userController.find);
+router.get('/user/:id', checkToken, userController.findById);
+router.put('/user/:id', checkToken, userController.update);
+router.delete('/user/:id', checkToken, userController.deleteById);
 
 module.exports = router;
