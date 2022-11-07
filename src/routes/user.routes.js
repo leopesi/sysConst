@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const userController = require('../controllers/user.controllers');
-const authController = require('../controllers/authController')
 
 //Credenciais
 const SECRET = process.env.SECRET
@@ -11,6 +10,7 @@ const SECRET = process.env.SECRET
 // Functions
 function checkToken(req, res, next) {
     const authHeader = req.headers['authorization']
+    console.log(authHeader)
     const token = authHeader && authHeader.split(' ')[1]
 
     if (!token) {
@@ -24,10 +24,10 @@ function checkToken(req, res, next) {
     }
 }
 
-router.post('/', userController.add);
-router.get('/',  userController.find);
-router.get('/:id', userController.findById);
-router.put('/:id', userController.update);
-router.delete('/:id', userController.deleteById);
+router.post('/', checkToken, userController.add);
+router.get('/',  checkToken, userController.find);
+router.get('/:id', checkToken, userController.findById);
+router.put('/:id', checkToken, userController.update);
+router.delete('/:id', checkToken, userController.deleteById);
 
 module.exports = router;

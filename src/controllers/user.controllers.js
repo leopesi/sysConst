@@ -106,7 +106,7 @@ async function findById(req, res) {
 };
 
 
-function deleteById(req, res) {
+async function deleteById(req, res) {
     CRUD.deleteById(req.params.id).
         then((data) => {
             res.status(200).json({
@@ -119,7 +119,7 @@ function deleteById(req, res) {
         });
 }
 
-function update(req, res) {
+async function update(req, res) {
     CRUD.update(req.body, req.params.id).
         then((data) => {
             res.status(200).json({
@@ -132,7 +132,7 @@ function update(req, res) {
         });
 }
 
-function find(req, res) {
+async function find(req, res) {
     CRUD.findAll().
 
         then((data) => {
