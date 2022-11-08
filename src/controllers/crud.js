@@ -26,20 +26,6 @@ function create(user) {
 }
 
 function update(user, id) {
-    var updateUser = {
-        nome: user.nome, 
-        sobrenome: user.sobrenome, 
-        cpf: user.cpf, 
-        email: user.email, 
-        telefone: user.telefone, 
-        endereço: user.endereco, 
-        numero: user.numero, 
-        estado: user.estado, 
-        cidade: user.cidade, 
-        bairro: user.bairro, 
-        rua: user.rua, 
-        cep: user.cep,
-    };
-    return Model.update(updateUser, { where: { id: id } })
+    return Model.update(user, { where: { id: id } })
 }
 module.exports = Crud;

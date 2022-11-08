@@ -95,6 +95,18 @@ async function add(req, res) {
 
 };
 
+async function find(req, res) {
+    CRUD.findAll().
+
+    then((data) => {
+            res.send(data),
+            console.log("Lista de Usuários encontrada!");
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
 async function findById(req, res) { 
     const id = req.params.id
     const user = await CRUD.findById(id); 
@@ -105,27 +117,27 @@ async function findById(req, res) {
     console.log("Usuário encontrado!")
 };
 
-
-async function deleteById(req, res) {
-    CRUD.deleteById(req.params.id).
-        then((data) => {
-            res.status(200).json({
-                message: "Gig deleted successfully",
-                pesi: data
-            })
-            console.log("Usuário Deletado!")
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-}
-
 async function update(req, res) {
-    CRUD.update(req.body, req.params.id).
+    const {nome, sobrenome, cpf, email, telefone, endereço, numero, estado, cidade, bairro, rua, cep, password, confirmpassword} = req.body
+    var user = {
+        nome, 
+        sobrenome, 
+        cpf, 
+        email, 
+        telefone, 
+        endereço, 
+        numero, 
+        estado, 
+        cidade, 
+        bairro, 
+        rua, 
+        cep,
+    };
+    CRUD.update(user, req.params.id).
         then((data) => {
             res.status(200).json({
-                message: "Gig updated successfully",
-                user: data
+                message: "User updated successfully",
+                user: user
             })
             console.log("Usuário Atualizado!")
         })
@@ -134,12 +146,14 @@ async function update(req, res) {
         });
 }
 
-async function find(req, res) {
-    CRUD.findAll().
-
-    then((data) => {
-            res.send(data),
-            console.log("Lista de Usuários encontrada!");
+async function deleteById(req, res) {
+    CRUD.deleteById(req.params.id).
+        then((data) => {
+            res.status(200).json({
+                message: "User deleted successfully",
+                pesi: data
+            })
+            console.log("Usuário Deletado!")
         })
         .catch((error) => {
             console.log(error);
